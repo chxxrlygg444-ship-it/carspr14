@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio | Chxrly</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <a href="#inicio">Portafolio</a>
+      </div>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="#inicio" class="active">Inicio</a></li>
+          <li><a href="#perfil">Perfil</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Proyecto Cards</h1>
+          <p>Desarrollador frontend en formación y estudiante de Derecho. Me enfoco en crear interfaces limpias, responsivas y funcionales.</p>
+          <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="perfil" class="section perfil">
+      <div class="container perfil-grid">
+        <div class="perfil-foto">
+          <img src="perfil.jpg.jpeg" alt="Foto de perfil de Chxrly" />
+        </div>
+        <div class="perfil-info">
+          <h2>Sobre mí</h2>
+          <p>Soy estudiante de Derecho con pasión por el desarrollo web. Me gusta estructurar proyectos de forma profesional, cuidar los detalles visuales y asegurar que todo funcione perfecto en cualquier dispositivo.</p>
+          <h3>Habilidades</h3>
+          <ul class="skills-list">
+            <li>HTML semántico</li>
+            <li>CSS (Flexbox, Grid, responsive design)</li>
+            <li>JavaScript básico</li>
+            <li>Organización de proyectos y GitHub</li>
+          </ul>
+          <h3>Tecnologías</h3>
+          <div class="tags">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>Git & GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="section proyectos">
+      <div class="container">
+        <h2>Proyectos</h2>
+        <p class="section-intro">Estos son algunos de mis proyectos integrados en el portafolio responsive.</p>
+        <div class="proyectos-grid" id="proyectos-grid">
+          <!-- Aquí se insertan los proyectos desde JSON -->
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section contacto">
+      <div class="container">
+        <h2>Contacto</h2>
+        <p class="section-intro">¿Tienes un proyecto o colaboración en mente? Envíame un mensaje.</p>
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="asunto">Asunto</label>
+              <input type="text" id="asunto" name="asunto" required />
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group form-group-full">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary btn-submit">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-info">
+        <p>&copy; 2026 Infotec. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-social">
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="Js/main.js"></script>
+</body>
+</html>

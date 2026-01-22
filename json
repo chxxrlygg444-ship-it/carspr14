@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "Perfil Personal",
+    "descripcion": "Página de presentación personal con información básica, foto y habilidades.",
+    "imagen": "img/proyecto1.jpg",
+    "link": "#"
+  },
+  {
+    "titulo": "Galería de Proyectos",
+    "descripcion": "Grid de cards responsivo que se adapta de 1 a 3 columnas.",
+    "imagen": "img/proyecto2.jpg",
+    "link": "#"
+  },
+  {
+    "titulo": "Formulario de Contacto",
+    "descripcion": "Formulario funcional con layout adaptable, labels claros y campos accesibles.",
+    "imagen": "img/proyecto3.jpg",
+    "link": "#"
+  }
+]
