@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Proyectos | Chxrly</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Estilos mínimos para centrar y agrandar las fotos */
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    .proyectos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; align-items: start; }
+    figure.project {
+      background: #fff; border-radius: 10px; padding: 18px; text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    figure.project img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      display: block;
+      margin: 0 auto 14px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    figcaption {
+      font-size: 16px; color:#222; line-height:1.4;
+      min-height: 56px;
+      padding: 6px 8px;
+    }
+    /* Hacer figcaption editable con estilo */
+    figcaption[contenteditable="true"] {
+      outline: none;
+      border: 1px dashed transparent;
+      transition: border-color .15s;
+    }
+    figcaption[contenteditable="true"]:focus {
+      border-color: #cbd5e1;
+      border-radius: 6px;
+      background: #fbfbfd;
+    }
+    @media (max-width: 800px) {
+      .proyectos-grid { grid-template-columns: 1fr; }
+      figure.project img { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo"><a href="index.html">Portafolio</a></div>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="proyectos.html" class="active">Proyectos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section proyectos">
+      <div class="container">
+        <h1>Mis proyectos</h1>
+        <p class="section-intro">A continuación puedes colocar 4 imágenes grandes y una descripción para cada una. Haz clic en la descripción para editarla directamente.</p>
+
+        <div class="proyectos-grid" id="proyectos-grid">
+          <figure class="project">
+            <img src="citocafe1.jpg.png" alt="Proyecto 1 - imagen" />
+            <figcaption contenteditable="true" aria-label="Descripción proyecto 1">CAFE CITO: Profesional de operaciones de cafetería con experiencia integral en la gestión diaria del negocio, atención al cliente y preparación de alimentos y bebidas. Durante mi periodo como encargado, lideré el equipo, optimicé procesos operativos y mantuve altos estándares de servicio y limpieza, garantizando una experiencia consistente para la clientela y un control eficiente del inventario y las ventas.</figcaption>
+          </figure>
+
+          <figure class="project">
+            <img src="fastpana.jpg.png" alt="Proyecto 2 - imagen" />
+            <figcaption contenteditable="true" aria-label="Descripción proyecto 2">FAST PANA: Encargado de cocina y repartidor con experiencia en operaciones de comida rápida y servicio a domicilio. Capaz de mantener ritmos de trabajo intensos, garantizar la calidad y seguridad alimentaria, y coordinar entregas eficientes. Me adapto con rapidez a distintas tareas del local y trabajo bien bajo presión para cumplir tiempos y estándares.</figcaption>
+          </figure>
+
+          <figure class="project">
+            <img src="hacker.jpg.jpg" alt="Proyecto 3 - imagen" />
+            <figcaption contenteditable="true" aria-label="Descripción proyecto 3">Encargado y salvavidas con formación en RCP y primeros auxilios, responsable de la seguridad y operación diaria de una instalación acuática. Experiencia en prevención de riesgos, respuesta rápida a emergencias y mantenimiento de áreas de piscina, combinada con atención al público y coordinación de turnos.</figcaption>
+          </figure>
+
+          <figure class="project">
+            <img src="hackersi.jpg.png" alt="Proyecto 4 - imagen" />
+            <figcaption contenteditable="true" aria-label="Descripción proyecto 4">Desarrollo de un portafolio web responsive centrado en una galería de cards dinámicas que muestran proyectos. Implementación mobile‑first, optimización de imágenes con srcset, y persistencia local de datos para el formulario de contacto. El diseño prioriza accesibilidad, rendimiento y una paleta moderna para buen contraste.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Infotec. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>gtfrqfw
+    // Opcional: guardar descripciones en localStorage para persistencia entre sesiones
+    (function(){
+      const captions = document.querySelectorAll('figcaption[contenteditable="true"]');
+      const key = 'proyectos_descripciones_v1';
+
+      // Cargar guardado
+      const saved = JSON.parse(localStorage.getItem(key) || 'null');
+      if (saved && Array.isArray(saved)) {
+        captions.forEach((cap, i) => { if (saved[i]) cap.textContent = saved[i]; });
+      }
+
+      // Guardar al perder foco
+      captions.forEach((cap, i) => {
+        cap.addEventListener('blur', () => {
+          const arr = Array.from(captions).map(c => c.textContent.trim());
+          localStorage.setItem(key, JSON.stringify(arr));
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

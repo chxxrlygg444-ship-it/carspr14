@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contacto | Chxrly</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Contenedor */
+    .container { max-width: 900px; margin: 0 auto; padding: 24px; box-sizing: border-box; }
+
+    /* Formulario */
+    .contact-form { display: grid; gap: 12px; }
+    .form-row { display:flex; gap:12px; flex-wrap:wrap; }
+    .form-row .form-group { flex:1; display:flex; flex-direction:column; min-width:160px; }
+    label { font-weight:600; margin-bottom:6px; color: var(--color-text, #ffffff); }
+
+    /* Inputs y textarea: fondo oscuro y texto claro para coincidir con el tema */
+    input, textarea {
+      padding:10px;
+      border-radius:6px;
+      border:1px solid rgba(148,163,184,0.08);
+      font-size:14px;
+      background: rgba(15,23,42,0.9);
+      color: var(--color-text, #ffffff);
+    }
+    input::placeholder, textarea::placeholder {
+      color: rgba(229,231,235,0.6);
+    }
+
+    /* Botón */
+    button.btn-primary {
+      padding:10px 14px;
+      border-radius:8px;
+      background: linear-gradient(90deg, var(--color-primary, #6366f1), #0b5fff);
+      color:#fff;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    /* Lista de contactos: tarjetas oscuras y texto claro */
+    .lista-contactos { margin-top:20px; display:grid; gap:12px; }
+    .contact-card {
+      padding:14px;
+      border-radius:10px;
+      background: linear-gradient(180deg, rgba(10,14,22,0.92), rgba(6,8,12,0.92));
+      border: 1px solid rgba(148,163,184,0.06);
+      box-shadow: 0 8px 20px rgba(2,6,23,0.6);
+      color: var(--color-text, #ffffff);
+    }
+    .contact-card p { margin:6px 0; color: var(--color-text, #ffffff); font-size:0.95rem; }
+    .contact-card strong { color: #e5e7eb; }
+
+    /* Headings y textos */
+    h1, p { color: var(--color-text, #ffffff); }
+
+    /* Responsive: en móvil las filas se apilan */
+    @media (max-width:700px) {
+      .form-row { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo"><a href="index.html">Portafolio</a></div>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="contacto.html" class="active">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section contacto">
+      <div class="container">
+        <h1>Contacto</h1>
+        <p>Deja tu mensaje. Los datos se registran localmente y se muestran abajo.</p>
+
+        <form id="form-contacto" class="contact-form" autocomplete="off">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="tu@ejemplo.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="55-1234-5678" required />
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="3" placeholder="Escribe tu mensaje..." required></textarea>
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="btn-primary">Enviar y registrar</button>
+          </div>
+        </form>
+
+        <section class="lista-contactos" id="lista-contactos" aria-live="polite">
+          <!-- Aquí se muestran los contactos guardados -->
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Infotec. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const STORAGE_KEY = 'chxrly_contactos_v1';
+      const form = document.getElementById('form-contacto');
+      const lista = document.getElementById('lista-contactos');
+
+      // Prepopula con 4 contactos si no hay suficientes (ejemplos completos)
+      function ensureMinimumContacts() {
+        let contactos = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || [];
+        if (contactos.length < 4) {
+          const ejemplo = [
+            { nombre: "Ana Pérez", email: "ana.perez@example.com", telefono: "55-1111-1111", mensaje: "Interesado en colaboración." },
+            { nombre: "Luis Gómez", email: "luis.gomez@example.com", telefono: "55-2222-2222", mensaje: "Consulta sobre proyecto." },
+            { nombre: "María Ruiz", email: "maria.ruiz@example.com", telefono: "55-3333-3333", mensaje: "Me gustaría contratarte." },
+            { nombre: "Carlos Díaz", email: "carlos.diaz@example.com", telefono: "55-4444-4444", mensaje: "Envío de propuesta." }
+          ];
+          for (let i = contactos.length; i < 4; i++) contactos.push(ejemplo[i]);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(contactos));
+        }
+      }
+
+      function renderList() {
+        const contactos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        lista.innerHTML = '';
+        contactos.forEach((c) => {
+          const card = document.createElement('div');
+          card.className = 'contact-card';
+          card.innerHTML = `
+            <p><strong>${escapeHtml(c.nombre)}</strong></p>
+            <p><strong>Email:</strong> ${escapeHtml(c.email)}</p>
+            <p><strong>Tel:</strong> ${escapeHtml(c.telefono)}</p>
+            <p>${escapeHtml(c.mensaje)}</p>
+          `;
+          lista.appendChild(card);
+        });
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; });
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const datos = {
+          nombre: form.nombre.value.trim(),
+          email: form.email.value.trim(),
+          telefono: form.telefono.value.trim(),
+          mensaje: form.mensaje.value.trim()
+        };
+
+        if (!datos.nombre || !datos.email || !datos.telefono || !datos.mensaje) {
+          alert('Por favor completa todos los campos.');
+          return;
+        }
+
+        const contactos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        contactos.push(datos);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(contactos));
+
+        renderList();
+        form.reset();
+        form.nombre.focus();
+      });
+
+      // Inicialización
+      ensureMinimumContacts();
+      renderList();
+    })();
+  </script>
+</body>
+</html>
