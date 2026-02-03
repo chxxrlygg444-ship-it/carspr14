@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portafolio | Chxrly</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,121 +10,91 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo">
-        <a href="#inicio">Portafolio</a>
+        <a href="index.html">Portafolio</a>
       </div>
+
       <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
-      <nav class="site-nav">
+
+      <nav class="site-nav" id="site-nav">
         <ul>
-          <li><a href="#inicio" class="active">Inicio</a></li>
-          <li><a href="#perfil">Perfil</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="inicio" class="hero">
+    <!-- HERO -->
+    <section class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
           <h1>Proyecto Cards</h1>
-          <p>Desarrollador frontend en formación y estudiante de Derecho. Me enfoco en crear interfaces limpias, responsivas y funcionales.</p>
-          <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+          <p>Desarrollador frontend en formación y estudiante de Derecho. El camino al éxito está pavimentado por fracasos.</p>
+          <a href="proyectos.html" class="btn-primary">Ver proyectos</a>
         </div>
       </div>
     </section>
 
+    <!-- SOBRE MÍ -->
     <section id="perfil" class="section perfil">
       <div class="container perfil-grid">
         <div class="perfil-foto">
-          <img src="perfil.jpg.jpeg" alt="Foto de perfil de Chxrly" />
+          <img src="brusi.jpg.jpg" alt="Foto de perfil de Chxrly" />
         </div>
+
         <div class="perfil-info">
           <h2>Sobre mí</h2>
-          <p>Soy estudiante de Derecho con pasión por el desarrollo web. Me gusta estructurar proyectos de forma profesional, cuidar los detalles visuales y asegurar que todo funcione perfecto en cualquier dispositivo.</p>
+          <p>Soy estudiante de Derecho con pasión por el desarrollo web. Me gusta estructurar proyectos de forma profesional, cuidar los detalles visuales y asegurar que todo funcione perfecto en cualquier dispositivo. Estudiante de Derecho en CESCJUC (5º semestre) con experiencia laboral en atención al cliente, administración, operación de cafeterías y recepción. Profesional proactivo y versátil, con habilidades en liderazgo, organización y resolución de problemas en entornos de alta presión. Destacado por la capacidad de adaptación, el manejo de tecnología y la orientación al trabajo en equipo.</p>
+
           <h3>Habilidades</h3>
           <ul class="skills-list">
             <li>HTML semántico</li>
-            <li>CSS (Flexbox, Grid, responsive design)</li>
+            <li>CSS (Flexbox, responsive)</li>
             <li>JavaScript básico</li>
             <li>Organización de proyectos y GitHub</li>
           </ul>
+
           <h3>Tecnologías</h3>
           <div class="tags">
             <span>HTML5</span>
             <span>CSS3</span>
             <span>JavaScript</span>
-            <span>Git & GitHub</span>
+            <span>Git &amp; GitHub</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="proyectos" class="section proyectos">
-      <div class="container">
-        <h2>Proyectos</h2>
-        <p class="section-intro">Estos son algunos de mis proyectos integrados en el portafolio responsive.</p>
-        <div class="proyectos-grid" id="proyectos-grid">
-          <!-- Aquí se insertan los proyectos desde JSON -->
-        </div>
-      </div>
-    </section>
-
-    <section id="contacto" class="section contacto">
-      <div class="container">
-        <h2>Contacto</h2>
-        <p class="section-intro">¿Tienes un proyecto o colaboración en mente? Envíame un mensaje.</p>
-        <form class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nombre">Nombre completo</label>
-              <input type="text" id="nombre" name="nombre" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Correo electrónico</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="asunto">Asunto</label>
-              <input type="text" id="asunto" name="asunto" required />
-            </div>
-            <div class="form-group">
-              <label for="telefono">Teléfono</label>
-              <input type="tel" id="telefono" name="telefono" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group form-group-full">
-              <label for="mensaje">Mensaje</label>
-              <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-            </div>
-          </div>
-          <button type="submit" class="btn-primary btn-submit">Enviar mensaje</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
+   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-info">
         <p>&copy; 2026 Infotec. Todos los derechos reservados.</p>
       </div>
       <div class="footer-social">
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Email</a>
+        <a href="#" aria-label="GitHub">chxxrlygg444-ship-it</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="mailto:tu@email.com" aria-label="Email">carlitos69@gmail.com</a>
       </div>
     </div>
   </footer>
 
-  <script src="Js/main.js"></script>
+  <script>
+    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('site-nav');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    })();
+  </script>
 </body>
 </html>
